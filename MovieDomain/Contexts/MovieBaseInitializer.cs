@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace MovieDomain.Contexts
 {
-    class MovieBaseInitializer : DropCreateDatabaseAlways<MovieContext>
+    class MovieBaseInitializer : DropCreateDatabaseIfModelChanges<MovieContext>
     {
         protected override void Seed(MovieContext context)
         {

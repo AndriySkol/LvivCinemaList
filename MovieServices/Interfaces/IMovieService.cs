@@ -10,6 +10,8 @@ namespace MovieServices.Services
 {
     public interface IMovieService
     {
+        IEnumerable<Cinema> GetCinemas();
+        IEnumerable<Movie> GetCurrentMovies();
         ScheduleModel Get(DateTime start, long[] cinemaId = null, string[] technlogies = null, long[] movieId = null);
     }
 }

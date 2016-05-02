@@ -50,5 +50,20 @@ namespace MovieServices.Services
                 return model;
             }
         }
+
+        public IEnumerable<Cinema> GetCinemas()
+        {
+            using(IUnitOfWork unit = _unitOfWorkFactory.Create())
+            {
+                return unit.Cinemas.Get();
+            }
+        }
+        public IEnumerable<Movie> GetCurrentMovies()
+        {
+            using (IUnitOfWork unit = _unitOfWorkFactory.Create())
+            {
+                return unit.Movies.Get(m => m.End != null && m.End >= DateTime.Now && m.Start <= DateTime.Now);
+            }
+        }
     }
 }
