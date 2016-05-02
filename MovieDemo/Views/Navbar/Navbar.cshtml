@@ -1,0 +1,29 @@
+﻿<div class="navbar default-color">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Showtime timetable", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            @if(ViewBag.IsAuth)
+            {
+                <ul class="nav navbar-nav navbar-right" ng-show="!layout.authData.isAuth">
+                    <li><a href="#"   class="waves-effect waves-light"><span class="glyphicon glyphicon-log-in"></span> Hello @ViewBag.Name</a></li>
+                    <li><a href="/logout" class="waves-effect waves-light"><span class="glyphicon glyphicon-registration-mark"></span> Sign Out</a></li>
+                </ul>
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right" ng-show="!layout.authData.isAuth">
+                    <li><a href="#" data-toggle="modal" data-target="#login" class="waves-effect waves-light"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#register" class="waves-effect waves-light"><span class="glyphicon glyphicon-registration-mark"></span> Register</a></li>
+                </ul>
+            }
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@using MovieServices.Models
+@using MovieDemo.Models
+@model ScheduleModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h5>Schedule for @Model.Day.ToShortDateString()</h5>
+
+@foreach(var x in Model.Sessions)
+{
+
+    <div class="row">
+        <div class="col-md-2 col-xs-1">
+            @x.Key.Movie.Name <span class="label label-@(StyleHelper.CinemaStyle(x.Key.Cinema))">@x.Key.Cinema.Name</span>
+                
+        </div>
+        <div class="col-md-10 col-xs-11">
+            @foreach (var s in x.Value)
+            {
+                @Html.Action("TimeBadge", s)
+            }
+        </div>
+    </div>
+        <hr />
+}
