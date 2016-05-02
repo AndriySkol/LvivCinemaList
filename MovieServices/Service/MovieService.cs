@@ -12,7 +12,6 @@ namespace MovieServices.Services
 {
     public class MovieService : IMovieService
     {
-        string _url;
         IUnitOfWorkFactory _unitOfWorkFactory;
 
         public int TechnologyId { get; set; }

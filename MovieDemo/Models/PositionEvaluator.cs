@@ -15,5 +15,10 @@ namespace MovieDemo.Models
             double percent = offcet / (16 * 60) * 100;
             return percent.ToString(CultureInfo.InvariantCulture);
         }
+
+        public static string GetPercent(int i)
+        {
+            return GetPercent(DateTime.Today + TimeSpan.FromHours(i));
+        }
     }
 }

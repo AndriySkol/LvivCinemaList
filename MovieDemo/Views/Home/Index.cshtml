@@ -6,22 +6,76 @@
     ViewBag.Title = "Index";
 }
 
-<h5>Schedule for @Model.Day.ToShortDateString()</h5>
 
-@foreach(var x in Model.Sessions)
-{
 
-    <div class="row">
-        <div class="col-md-2 col-xs-1">
-            @x.Key.Movie.Name <span class="label label-@(StyleHelper.CinemaStyle(x.Key.Cinema))">@x.Key.Cinema.Name</span>
-                
+<div class="row">
+    <div class="col-md-2 col-md-push-10" id="filtersCol">
+        <div class="card z-depth-2 default-color-dark">
+            <div class="card-content white-text">
+                <h6 class="card-title">Filters</h6>
+                <ul class="filterList">
+                    <li>
+                        <i class="glyphicon glyphicon-calendar"></i>Date
+                        <input type="date" />
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-map-marker"></i>Cinemas <span class="caret"></span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-film"></i>Movies <span class="caret"></span>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-facetime-video"></i>Technologies <span class="caret"></span>
+</li>
+                </ul>
+            </div>
+            <div class="card-action ">
+                <button class="no-margin btn white btn-sm waves-effect waves-light">Submit</button>
+            </div>
+
         </div>
-        <div class="col-md-10 col-xs-11">
-            @foreach (var s in x.Value)
-            {
-                @Html.Action("TimeBadge", s)
-            }
+    </div> 
+    <div class="col-md-10 col-md-pull-2 col-xs-12 ">
+        <div class="row">
+
+            <div class="col-xs-12 ">
+                <h6>@Model.Day.ToShortDateString()</h6>
+                <img src="~/Content/images/showtimes-dark-hours.png" style="width:100%" />
+            </div>
+            <div class="col-md-2 col-xs-1"></div>
+            <div class="col-md-10 col-xs-11 ">
+                @for (int i = 10; i <= 24; ++i)
+                {
+                    <a href="#" style="position:absolute; left:@(PositionEvaluator.GetPercent(i))%">@i</a>
+                }
+                <br />
+
+            </div>
+
+
         </div>
-    </div>
-        <hr />
-}
+        <div class="row">
+            <hr />
+        </div>
+        @foreach (var x in Model.Sessions)
+        {
+            <div class="row">
+                <div class="col-md-2 col-xs-1">
+                    @x.Key.Movie.Name <span class="label label-@(StyleHelper.CinemaStyle(x.Key.Cinema))">@x.Key.Cinema.Name</span>
+
+                </div>
+                <div class="col-md-10 col-xs-11">
+                    @foreach (var s in x.Value)
+                    {
+                        @Html.Action("TimeBadge", s)
+                    }
+                </div>
+            </div>
+            <hr />
+        }
+    </div>  
+    
+    
+    
+</div>
+

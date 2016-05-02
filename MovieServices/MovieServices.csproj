@@ -90,7 +90,6 @@
     <Compile Include="Interfaces\IMovieService.cs" />
     <Compile Include="Interfaces\ITimeHelper.cs" />
     <Compile Include="Interfaces\IUserManager.cs" />
-    <Compile Include="Models\PositionEvaluator.cs" />
     <Compile Include="Models\RegistrationBindingModel.cs" />
     <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Service\AuthService.cs" />

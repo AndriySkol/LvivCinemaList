@@ -1,4 +1,5 @@
-﻿using MovieDomain.Entities;
+﻿using MovieDemo.Models;
+using MovieDomain.Entities;
 using MovieServices.Models;
 using MovieServices.Services;
 using Ninject;

@@ -16,4 +16,29 @@
     z-index: 1000;
 }
 
+.card-action>button.btn.no-margin {
+    margin: 0;
+}
+
+@media(min-width: 993px)
+{
+    #filtersCol {
+        padding-right: 0px;
+    }
+    #filtersCol>.card {
+        margin-right: -1em;
+    }
+}
+
+.filterList li {
+    padding: 0.7em 0.5em;
+    cursor: pointer;
+}
+
+.filterList li:hover {
+    background-color: teal;
+}
+i {
+    margin-right: 0.5em;
+}
 
