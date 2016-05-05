@@ -14,5 +14,7 @@ namespace MovieServices.Interfaces
         Task<User> FindAsync(string name, string password);
 
         Task<IdentityResult> Register(RegistrationBindingModel model);
+
+        Task<IList<string>> GetRolesAsync(User user);
     }
 }

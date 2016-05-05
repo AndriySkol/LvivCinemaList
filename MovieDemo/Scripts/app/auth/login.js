@@ -1,5 +1,5 @@
 ﻿$(function () {
-    $("#filterDate").bootstrapMaterialDatePicker({ time: false });
+
     $("#logInForm").submit(function (e) {
         e.preventDefault();
         var data = $("#logInForm").serializeArray();

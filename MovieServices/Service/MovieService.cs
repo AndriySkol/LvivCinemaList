@@ -62,7 +62,7 @@ namespace MovieServices.Services
         {
             using (IUnitOfWork unit = _unitOfWorkFactory.Create())
             {
-                return unit.Movies.Get(m => m.End != null && m.End >= DateTime.Now && m.Start <= DateTime.Now);
+                return unit.Movies.Get(m => m.End != null && m.End >= DateTime.Today && m.Start <= DateTime.Today);
             }
         }
     }

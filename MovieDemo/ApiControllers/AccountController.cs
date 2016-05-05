@@ -12,6 +12,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System;
+using MovieDomain.Identity;
+using System.Linq;
+using MovieDomain.Contexts;
+using MovieDomain.Auth;
 namespace MovieDemo.ApiControllers
 {
     public class AccountController : ApiController
@@ -63,7 +67,8 @@ namespace MovieDemo.ApiControllers
                 var user = await _authService.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
-                    SignIn(user);
+                    var roles = await _authService.GetRolesAsync(user);
+                    SignIn(user, roles);
                     string urlBase = Request.RequestUri.GetLeftPart(UriPartial.Authority);
                     return Redirect(urlBase);
                 }
@@ -115,9 +120,10 @@ namespace MovieDemo.ApiControllers
             return null;
         }
 
-        private void SignIn(User user)
+        private void SignIn(User user, IEnumerable<string> roles)
         {
             var claims = new List<Claim>();
+            roles.ToList().ForEach(s => claims.Add(new Claim(ClaimTypes.Role, s)));
             claims.Add(new Claim(ClaimTypes.Name, user.UserName));
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString(), ClaimValueTypes.Integer));
             var id = new ClaimsIdentity(claims,

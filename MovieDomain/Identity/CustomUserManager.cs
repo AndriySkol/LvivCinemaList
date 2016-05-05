@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieServices.Auth
+namespace MovieDomain.Auth
 {
     public class CustomUserManager : UserManager<User, long>, IUserManager
     {

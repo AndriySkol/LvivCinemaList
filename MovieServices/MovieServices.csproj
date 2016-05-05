@@ -84,12 +84,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auth\CustomUserManager.cs" />
     <Compile Include="Interfaces\DefaultTimeHelper.cs" />
     <Compile Include="Interfaces\IAuthService.cs" />
     <Compile Include="Interfaces\IMovieService.cs" />
     <Compile Include="Interfaces\ITimeHelper.cs" />
-    <Compile Include="Interfaces\IUserManager.cs" />
     <Compile Include="Models\RegistrationBindingModel.cs" />
     <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Service\AuthService.cs" />
@@ -106,6 +104,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Auth\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

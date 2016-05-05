@@ -1,4 +1,7 @@
-﻿using MovieDomain.Entities;
+﻿using Microsoft.AspNet.Identity;
+using MovieDomain.Auth;
+using MovieDomain.Entities;
+using MovieDomain.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -34,6 +37,14 @@ namespace MovieDomain.Contexts
             context.Showtimes.AddRange(showtimesKross);
             context.Showtimes.AddRange(showtimesForum);
             context.SaveChanges();
+            var authContext = new AuthorizationContext();
+            CustomUserManager userManager = new CustomUserManager(new CustomUserStore(authContext));
+            User admin = new User { UserName = "admin", Email = "admin@mail.com" };
+            userManager.Create(admin, "12345678");
+            RoleManager<CustomRole, long> manager = new RoleManager<CustomRole, long>(new CustomRoleStore(authContext));
+            CustomRole role = new CustomRole { Name = "Admin" };
+            manager.Create(role);
+            userManager.AddToRole<User, long>(admin.Id, "admin");
         }
 
 

@@ -3,6 +3,6 @@
 @model Showtime
 <a class="badge white-text @ViewBag.Color lighten-1 hoverable timebadge"
       style="left: @ViewBag.Position%"
-      href="@Model.OrderUrl">
+      href="/Showtime?id=@Model.Id">
     @Model.Date.ToShortTimeString()
 </a>

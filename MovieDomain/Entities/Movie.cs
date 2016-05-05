@@ -16,6 +16,25 @@ namespace MovieDomain.Entities
         public DateTime? End { get; set; }
         public string Url { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        public string Description { get; set; }
+
+        public decimal? ImdbRate { get; set; }
+
+        public decimal? KinopoiskRate { get; set; }
+
+        public string Genres { get; set; }
+
+        public string Director { get; set; }
+
+
+        public string MainActors { get; set; }
+
+        public string Country { get; set; }
+
+        public int? Year { get; set; }
+
         public virtual ICollection<Cinema> Cinemas { get; set; }
         public virtual ICollection<Showtime> Showtimes { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿using MovieDemo.Infrastructure.WebApi;
+using MovieDomain.Auth;
 using MovieDomain.UnitOfWork;
-using MovieServices.Auth;
 using MovieServices.Interfaces;
 using MovieServices.Service;
 using MovieServices.Services;

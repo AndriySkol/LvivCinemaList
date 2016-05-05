@@ -14,6 +14,7 @@ namespace MovieDemo.Controllers
         {
             ViewBag.IsAuth = Request.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
+            ViewBag.IsAdmin = User.IsInRole("Admin");
             return PartialView();
         }
 	}

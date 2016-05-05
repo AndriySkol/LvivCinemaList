@@ -30,5 +30,6 @@ namespace MovieServices.Interfaces
         Task<User> FindByEmailAsync(string email);
 
         Task<IList<string>> GetRolesAsync(long userId);
+
     }
 }

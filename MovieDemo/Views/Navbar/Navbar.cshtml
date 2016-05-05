@@ -7,12 +7,17 @@
                 <span class="icon-bar"></span>
             </button>
             @Html.ActionLink("Showtime timetable", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
         </div>
         <div class="navbar-collapse collapse">
-            @if(ViewBag.IsAuth)
+            @if (ViewBag.IsAuth)
             {
                 <ul class="nav navbar-nav navbar-right" ng-show="!layout.authData.isAuth">
-                    <li><a href="#"   class="waves-effect waves-light"><span class="glyphicon glyphicon-log-in"></span> Hello @ViewBag.Name</a></li>
+                    <li><a href="#" class="waves-effect waves-light"><span class="glyphicon glyphicon-log-in"></span> Hello @ViewBag.Name</a></li>
+                    @if (ViewBag.IsAdmin)
+                    {
+                        <li>@Html.ActionLink("Movies", "Index", "Movies", new { area = "" }, new { @class = "waves-effect waves-light" }) </li>
+                    }
                     <li><a href="/logout" class="waves-effect waves-light"><span class="glyphicon glyphicon-registration-mark"></span> Sign Out</a></li>
                 </ul>
             }
@@ -23,7 +28,7 @@
                     <li><a href="#" data-toggle="modal" data-target="#register" class="waves-effect waves-light"><span class="glyphicon glyphicon-registration-mark"></span> Register</a></li>
                 </ul>
             }
-            
+
         </div>
     </div>
 </div>

@@ -13,6 +13,11 @@ namespace MovieDomain.Contexts
 {
     public class AuthorizationContext : IdentityDbContext<User, CustomRole, long, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
+        static AuthorizationContext()
+        {
+  
+        }
+
         public AuthorizationContext()
             : base("name=MovieBase")
         {

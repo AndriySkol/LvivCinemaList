@@ -1,5 +1,4 @@
 ﻿using MovieDomain.Entities;
-using MovieServices.Auth;
 using MovieServices.Interfaces;
 using MovieServices.Models;
 using System;
@@ -19,10 +18,16 @@ namespace MovieServices.Service
             _userManager = userManager;
         }
 
+        public Task<IList<string>> GetRolesAsync(User user)
+        {
+            return _userManager.GetRolesAsync(user.Id);
+        }
+
         public Task<MovieDomain.Entities.User> FindAsync(string name, string password)
         {
             return _userManager.FindAsync(name, password);
         }
+
 
         public Task<Microsoft.AspNet.Identity.IdentityResult> Register(RegistrationBindingModel model)
         {
