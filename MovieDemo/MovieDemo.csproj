@@ -233,6 +233,7 @@
     <Content Include="Scripts\app\auth\filters.js" />
     <Content Include="Scripts\app\auth\login.js" />
     <Content Include="Scripts\app\auth\registration.js" />
+    <Content Include="Scripts\app\likes.js" />
     <Content Include="Scripts\bootstrap-material-datetimepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -288,6 +289,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\AccountController.cs" />
+    <Compile Include="Models\LikeBindingModel.cs" />
+    <Compile Include="ApiControllers\LikesController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StartupAuth.cs" />
@@ -345,6 +348,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="NewFolder1\" />
+    <Folder Include="Views\Likes\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieDomain\MovieDomain.csproj">

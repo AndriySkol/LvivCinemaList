@@ -15,9 +15,13 @@
                     @Model.Movie.Name
                     @if (ViewBag.IsAuth)
                     {
-                        <span style="font-size:1em; position: relative; top: 5px; cursor:pointer" class="glyphicon glyphicon-heart"> </span><span class="badge primary-color" style="position: relative;">
+                        <span id="likeBut" style="font-size:1em; position: relative; top: 5px; cursor:pointer" class="glyphicon glyphicon-heart"> </span>
+                        <span id="unlikeBut" style="font-size:1em; position: relative; top: 5px; cursor:pointer" class="glyphicon glyphicon-heart-empty"> </span>
+                        <span id="likesAm" class="badge primary-color" style="position: relative;">
                             @Model.LikesAmount
                         </span>
+
+
                     }
 
                 </h4>
@@ -98,7 +102,7 @@
     <div class="row">
         <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
             <div class="card card-panel horizontal-listing no-padding comments-section">
-                <h5 class="text-center title">Comments <span class="label label-default">3</span></h5>
+                <h5 class="text-center title">Comments <span class="label label-default">@Model.CommentsAmount</span></h5>
                 <hr>
                 <div class="container-fluid">
 
@@ -107,10 +111,10 @@
                     {
                         <div class="row hoverable">
                             <div class="col-sm-2">
-                                <img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="img-responsive img-circle z-depth-">
+                                <img src="http://images.clipartpanda.com/movie-night-clipart-9cp4q9xcE.jpeg" class="img-responsive img-circle z-depth-">
                             </div>
                             <div class="col-sm-10">
-                                <a href="#"><h5 class="title">@(comment.User.UserName)   <i class="glyphicon glyphicon-star">5</i></h5></a>
+                                <a href="#"><h5 class="title">@(comment.User.UserName)   <i class="glyphicon glyphicon-star pull-right deep-purple-text"><span class="black-text">5</span></i></h5></a>
                                 <i class="fa fa-clock-o">
                                     @if (comment.Time - DateTime.Now > TimeSpan.FromDays(1))
                                     {
@@ -131,10 +135,10 @@
                     <!--Second row-->
                     <div class="row hoverable">
                         <div class="col-sm-2">
-                            <img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-3.jpg" class="img-responsive img-circle z-depth-">
+                            <img src="http://images.clipartpanda.com/movie-night-clipart-9cp4q9xcE.jpeg" class="img-responsive img-circle z-depth-">
                         </div>
                         <div class="col-sm-10">
-                            <a href="#"><h5 class="title">Lorem ipsum <i class="fa fa-reply"> Reply</i></h5></a>
+                            <a href="#"><h5 class="title">Lorem ipsum </h5></a>
                             <i class="fa fa-clock-o"> 05/10/2015</i>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illum impedit dolor possimus architecto labore.</p>
                         </div>
@@ -147,20 +151,23 @@
 
     <div class="row">
 
-        <form class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
+        <form method="post" class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
             <div class="card-panel reply-section hoverable">
                 <h5 class="text-center">Leave a comment</h5>
                 <hr>
                 <div class="input-field">
                     <i class="material-icons prefix">mode_edit</i>
-                    <textarea id="reply-text" class="materialize-textarea" required></textarea>
+                    <textarea minlength="5" name="text" id="reply-text" class="materialize-textarea" required></textarea>
                     <label for="reply-text">Text</label>
                 </div>
                 <div class="input-field">
                     <i class="fa fa-star prefix"></i>
-                    <input type="number" min="1" max="5" id="reply-text" required />
+                    <input type="number" name="rate" min="1" max="5" id="reply-text" required />
                     <label for="reply-text">Rate session in cinema (from 1 to 5)</label>
                 </div>
+                <input name="showtimeId" hidden value="@Model.Showtime.Id" />
+                <input name="cinemaId" hidden value="@Model.Cinema.Id" />
+                <input name="movieId" hidden value="@Model.Movie.Id" />
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
                 </div>
@@ -171,4 +178,11 @@
     </div>
 }
 
+<script>
+    model = {cinemaId: @Model.Cinema.Id, movieId: @Model.Movie.Id};
+    toHide = "@((Model.IsLiked) ? "#likeBut" : "#unlikedBut")";
+
+</script>
 <!--./Main row-->
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/app/likes.js"></script>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using MovieDomain.Entities;
 
 namespace MovieDemo.Controllers
 {
@@ -44,5 +45,22 @@ namespace MovieDemo.Controllers
 
         [HttpPost]
         public ActionResult Index(CommentBindingModel comment)
+        {
+
+            using (var context = new MovieContext())
+            {
+                context.Comments.Add(
+                    new Comment { 
+                        CinemaId = comment.CinemaId, 
+                        MovieId = comment.MovieId, 
+                        Time = DateTime.Now, 
+                        Text = comment.Text, 
+                        UserId = User.Identity.GetUserId<long>()
+                    });
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("Index", new { id = comment.ShowtimeId });
+        }
     }
 }
