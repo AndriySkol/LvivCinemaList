@@ -49,8 +49,8 @@ namespace MovieDemo.Controllers
                 date = DateTime.Today;
             }
 
-            
 
+            ViewBag.IsAuth = User.Identity.IsAuthenticated;
             Dictionary<Cinema, bool> cinemaDict = _service.GetCinemas().ToDictionary(cinema => cinema, cinemaSelect);
             Dictionary<Movie, bool>  movieDict = _service.GetCurrentMovies().ToDictionary(movie => movie, movieSelect);
             FilterViewModel filterModel = new FilterViewModel { DateString = date.Value.ToString("yyyy-MM-dd"),Cinemas = cinemaDict, Movies = movieDict,

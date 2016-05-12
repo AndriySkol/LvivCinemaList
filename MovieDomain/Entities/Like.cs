@@ -9,6 +9,7 @@ namespace MovieDomain.Entities
     public class Like
     {
         public long Id { get; set; }
+        public int Rate { get; set; }
         public Movie Movie { get; set; }
         public Cinema Cinema { get; set; }
         public User User { get; set; }

@@ -8,7 +8,7 @@
         .then(function () {
             like.hide();
             unlike.show();
-            $("#likesAm").text(parseInt($("#likesAm").text() + 1));
+            $("#likesAm").text(parseInt($("#likesAm").text()) + 1);
         },
         function () {
         });
@@ -19,7 +19,7 @@
         .then(function () {
             unlike.hide();
             like.show();
-            $("#likesAm").text(parseInt($("#likesAm").text() -1 ));
+            $("#likesAm").text(parseInt($("#likesAm").text()) -1 );
         },
         function () {
         });
