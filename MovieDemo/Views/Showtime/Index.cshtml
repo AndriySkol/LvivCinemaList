@@ -1,0 +1,175 @@
+﻿@using MovieDemo.Models
+@model SessionViewModel
+@{
+
+}
+<div class="row">
+    <div class="col-md-4">
+        <div class="waves-effect waves-light mask z-depth-2"><img src="@Model.Movie.ImageUrl" alt="" class="img-responsive " /></div>
+
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-sm-9 card card-panel">
+                <h4>
+                    @Model.Movie.Name
+                    
+
+                </h4>
+                @if (ViewBag.IsAuth)
+                {
+                    <label for="rating">Rate</label>
+                    <input id="rating" type="number" class="rating" />
+
+
+                }
+                <hr />
+                <h5>
+                    Session info:
+                </h5>
+                <ul>
+                    <li>
+                        <p>
+                            <i class="glyphicon glyphicon-calendar"></i>Session date: @Model.Showtime.Date.ToShortDateString()
+                        </p>
+
+                    </li>
+                    <li>
+                        <p><i class="glyphicon glyphicon-time"></i>Session time: @Model.Showtime.Date.ToShortTimeString()</p>
+
+                    </li>
+                    <li>
+                        <p><i class="glyphicon glyphicon-map-marker"></i>Adress: @Model.Cinema.Adress</p>
+
+                    </li>
+                    <li>
+                        <p><i class="glyphicon glyphicon-film"></i>Cinema: <span class="label label-primary">@Model.Cinema.Name</span></p>
+
+                    </li>
+
+                </ul>
+                <hr />
+                <h5>Movie info:</h5>
+                <p><i class="glyphicon glyphicon-time"></i>Year: @Model.Movie.Year</p>
+                <p><i class="glyphicon glyphicon-map-marker"></i>Country: @Model.Movie.Country</p>
+                <p><i class="glyphicon glyphicon-user"></i>Director: @Model.Movie.Director</p>
+                <p><i class="glyphicon glyphicon-tags"></i>Genres: @Model.Movie.Genres</p>
+                <p><i class="glyphicon glyphicon-star"></i>ImdbRate: @Model.Movie.ImdbRate</p>
+                <p><i class="glyphicon glyphicon-book"></i> Description: @Model.Movie.Description</p>
+                <a href="@Model.Movie.Url" class="btn btn-block btn-label">Find more Info</a>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card  stylish-color-dark session-card hoverable z-index-1 pull-left">
+
+                    <div class="card-content">
+                        <div class="row">
+                            <div style="margin-left:10px">
+                                @foreach (char c in Model.Showtime.Date.ToString("hh:mm"))
+                                {
+                                    if (c == ':')
+                                    {
+                                        <span class="card clock stylish-color-dark white-text">:</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="card clock">@c</span>
+                                    }
+                                }
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="label label-primary" style="margin-left:10px">
+                                @Model.Cinema.Name
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a href="@Model.Showtime.OrderUrl" class="btn btn-default"> Buy Ticket</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@if (ViewBag.IsAuth)
+{
+    <div class="row">
+        <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
+            <div class="card card-panel horizontal-listing no-padding comments-section">
+                <h5 class="text-center title">Comments <span class="label label-default">@Model.CommentsAmount</span></h5>
+                <hr>
+                <div class="container-fluid">
+
+                    <!--First row-->
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <div class="row hoverable">
+                            <div class="col-sm-2">
+                                <img src="http://images.clipartpanda.com/movie-night-clipart-9cp4q9xcE.jpeg" class="img-responsive img-circle z-depth-">
+                            </div>
+                            <div class="col-sm-10">
+                                <a href="#"><h5 class="title">@(comment.User.UserName)   <i class="glyphicon glyphicon-star pull-right deep-purple-text"><span class="black-text">5</span></i></h5></a>
+                                <i class="fa fa-clock-o">
+                                    @if (comment.Time - DateTime.Now > TimeSpan.FromDays(1))
+                                    {
+                                        @comment.Time.ToShortDateString()
+                                    }
+                                    else
+                                    {
+                                        @comment.Time.ToShortTimeString()
+                                    }
+
+                                </i>
+                                <p>@comment.Text</p>
+                            </div>
+                        </div>
+                    }
+
+                    <!--/.First row-->
+         
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <form method="post" class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
+            <div class="card-panel reply-section hoverable">
+                <h5 class="text-center">Leave a comment</h5>
+                <hr>
+                <div class="input-field">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea minlength="5" name="text" id="reply-text" class="materialize-textarea" required></textarea>
+                    <label for="reply-text">Text</label>
+                </div>
+                <div class="input-field">
+                    <i class="fa fa-star prefix"></i>
+                    <input type="number" name="rate" min="1" max="5" id="reply-text" required />
+                    <label for="reply-text">Rate session in cinema (from 1 to 5)</label>
+                </div>
+                <input name="showtimeId" hidden value="@Model.Showtime.Id" />
+                <input name="cinemaId" hidden value="@Model.Cinema.Id" />
+                <input name="movieId" hidden value="@Model.Movie.Id" />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+}
+
+<script>
+    model = {cinemaId: @Model.Cinema.Id, movieId: @Model.Movie.Id};
+    toHide = "@((Model.IsLiked) ? "#likeBut" : "#unlikeBut")";
+
+</script>
+<!--./Main row-->
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/app/likes.js"></script>

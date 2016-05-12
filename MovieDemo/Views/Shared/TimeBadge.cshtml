@@ -1,0 +1,8 @@
+﻿@using MovieDomain.Entities
+@using MovieDemo.Models
+@model Showtime
+<a class="badge white-text @ViewBag.Color lighten-1 hoverable timebadge"
+      style="left: @ViewBag.Position%"
+      href="/Showtime?id=@Model.Id">
+    @Model.Date.ToShortTimeString()
+</a>

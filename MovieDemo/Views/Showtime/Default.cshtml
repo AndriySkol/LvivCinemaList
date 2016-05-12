@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-md-4">
+        <div class="waves-effect waves-light mask z-depth-2"><img src="http://cdn.collider.com/wp-content/uploads/2015/12/zootopia-movie-poster.jpg" alt="" class="img-responsive " /></div>
+
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-sm-9 card card-panel">
+                <h4>Zootopia   <span style="font-size:1em; position: relative; top: 5px; cursor:pointer" class="glyphicon glyphicon-heart"> </span><span class="badge primary-color" style="position: relative;">30</span></h4>
+                <hr />
+                <h5>
+                    Session info:
+                </h5>
+                <ul>
+                    <li>
+                        <p>
+                            <i class="glyphicon glyphicon-calendar"></i>Session date: 05/05/2016
+                        </p>
+
+                    </li>
+                    <li>
+                        <p><i class="glyphicon glyphicon-time"></i>Session time: 22:03</p>
+
+                    </li>
+                    <li>
+                        <p><i class="glyphicon glyphicon-map-marker"></i>Adress: Somewhat</p>
+
+                    </li>
+                    <li>
+                        <p><i class="glyphicon glyphicon-film"></i>Cinema: <span class="label label-primary">King Cross</span></p>
+
+                    </li>
+                    <li>
+                        <p><i class="glyphicon glyphicon-map-marker"></i>Adress: Somewhat</p>
+
+                    </li>
+
+                </ul>
+                <hr />
+                <h5>Movie info:</h5>
+                <p><i class="glyphicon glyphicon-time"></i>Year</p>
+                <p><i class="glyphicon glyphicon-map-marker"></i>Country</p>
+                <p><i class="glyphicon glyphicon-user"></i>Director</p>
+                <p><i class="glyphicon glyphicon-tags"></i>Genres</p>
+                <p><i class="glyphicon glyphicon-star"></i>ImdbRate: 8.3</p>
+                <p><i class="glyphicon glyphicon-book"></i> Description: In a city of anthropomorphic animals, a rookie bunny cop and a cynical con artist fox must work together to uncover a conspiracy.</p>
+                <a class="btn btn-block btn-label">Find more Info</a>
+            </div>
+            <div class="col-sm-3">
+                <div class="card  stylish-color-dark session-card hoverable z-index-1 pull-left">
+
+                    <div class="card-content">
+                        <div class="row">
+                            <div style="margin-left:10px">
+                                <span class="card clock">2</span> <span class="card clock">3</span> <span class="card clock stylish-color-dark white-text">:</span> <span class="card clock ">0</span> <span class="card clock">3</span>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="label label-primary" style="margin-left:10px">
+                                King Cross
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-default"> Buy Ticket</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
+        <div class="card card-panel horizontal-listing no-padding comments-section">
+            <h5 class="text-center title">Comments <span class="label label-default">3</span></h5>
+            <hr>
+            <div class="container-fluid">
+
+                <!--First row-->
+                <div class="row hoverable">
+                    <div class="col-sm-2">
+                        <img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-1.jpg" class="img-responsive img-circle z-depth-">
+                    </div>
+                    <div class="col-sm-10">
+                        <a href="#"><h5 class="title">Author   <i class="glyphicon glyphicon-star">5</i></h5></a>
+                        <i class="fa fa-clock-o"> 05/10/2015</i>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illum impedit dolor possimus architecto labore.</p>
+                    </div>
+                </div>
+                <!--/.First row-->
+                <!--Second row-->
+                <div class="row hoverable">
+                    <div class="col-sm-2">
+                        <img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-3.jpg" class="img-responsive img-circle z-depth-">
+                    </div>
+                    <div class="col-sm-10">
+                        <a href="#"><h5 class="title">Lorem ipsum <i class="fa fa-reply"> Reply</i></h5></a>
+                        <i class="fa fa-clock-o"> 05/10/2015</i>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illum impedit dolor possimus architecto labore.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <form class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
+        <div class="card-panel reply-section hoverable">
+            <h5 class="text-center">Leave a comment</h5>
+            <hr>
+            <div class="input-field">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="reply-text" class="materialize-textarea" required></textarea>
+                <label for="reply-text">Text</label>
+            </div>
+            <div class="input-field">
+                <i class="fa fa-star prefix"></i>
+                <input type="number" min="1" max="5" id="reply-text" required />
+                <label for="reply-text">Rate session in cinema (from 1 to 5)</label>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+<!--./Main row-->
