@@ -7,35 +7,33 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using MovieServices.Service;
+using MovieServices.Interfaces;
 
 namespace MovieDemo.ApiControllers
 {
     public class LikesController : ApiController
     {
-      
+        private ILikeService _service;
+        public LikesController(ILikeService service)
+        {
+            _service = service;
+        }
         public IHttpActionResult Like(LikeBindingModel like)
         {
-            using(var context = new MovieContext())
+            
+            long userId = User.Identity.GetUserId<long>();
+            if(like != null)
             {
-                context.Likes.Add(new Rate { MovieId = like.MovieId, CinemaId = like.CinemaId, UserId = User.Identity.GetUserId<long>() });
-                context.SaveChanges();
+                _service.SubmitLike(like, userId);
+                return Ok();
             }
-
-            return Ok();
+            else
+            {
+                return BadRequest();
+            }
+ 
         }
 
-        public IHttpActionResult Unlike(LikeBindingModel like)
-        {
-            using (var context = new MovieContext())
-            {
-                var id = User.Identity.GetUserId<long>();
-                var likeEntity = context.Likes.First(l => l.UserId == id  && l.CinemaId == like.CinemaId && l.MovieId == like.MovieId);
-
-                context.Likes.Remove(likeEntity);
-                context.SaveChanges();
-            }
-
-            return Ok();
-        }
     }
 }

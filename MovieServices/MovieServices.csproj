@@ -88,11 +88,17 @@
     <Compile Include="Interfaces\IAuthService.cs" />
     <Compile Include="Interfaces\IMovieService.cs" />
     <Compile Include="Interfaces\ITimeHelper.cs" />
+    <Compile Include="Models\CommentDTO.cs" />
     <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\LikeBindingModel.cs" />
     <Compile Include="Models\RegistrationBindingModel.cs" />
     <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Service\AuthService.cs" />
+    <Compile Include="Service\CommentService.cs" />
     <Compile Include="Service\DummyTimeHelper.cs" />
+    <Compile Include="Interfaces\ILikeService.cs" />
+    <Compile Include="Interfaces\ICommentService.cs" />
+    <Compile Include="Service\LikeService.cs" />
     <Compile Include="Service\MovieService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

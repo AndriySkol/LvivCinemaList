@@ -8,12 +8,12 @@
         <ul class="filterList">
             <li>
                 <p>
-                    <i class="glyphicon glyphicon-calendar"></i>Date
+                    <i class="glyphicon glyphicon-calendar i-margin"></i>Date
                     <input type="text" id="filterDate" name="date" value="@Model.DateString"/>
                 </p>
             </li>
             <li>
-                <p data-toggle="collapse" data-target="#cinemaFilterList"><i class="glyphicon glyphicon-map-marker"></i>Cinemas <span class="caret"></span></p>
+                <p data-toggle="collapse" data-target="#cinemaFilterList"><i class="glyphicon glyphicon-map-marker i-margin"></i>Cinemas <span class="caret"></span></p>
                 <ul class="filterList-second collapse" id="cinemaFilterList">
                     @foreach(var pair in Model.Cinemas)
                     {
@@ -26,7 +26,7 @@
 
             <li>
                 <p data-toggle="collapse" data-target="#moviesFilterList">
-                    <i class="glyphicon glyphicon-film"></i>Movies <span class="caret"></span>
+                    <i class="glyphicon glyphicon-film i-margin"></i>Movies <span class="caret"></span>
                 </p>
                 <ul class="filterList-second collapse" id="moviesFilterList">
                     @foreach (var pair in Model.Movies)
@@ -40,7 +40,7 @@
             </li>
             <li>
                 <p data-toggle="collapse" data-target="#technologyFilterList">
-                    <i class="glyphicon glyphicon-facetime-video"></i>Technologies <span class="caret"></span>
+                    <i class="glyphicon glyphicon-facetime-video i-margin"></i>Technologies <span class="caret"></span>
                 </p>
                 <ul class="filterList-second collapse" id="technologyFilterList">
                     <li>

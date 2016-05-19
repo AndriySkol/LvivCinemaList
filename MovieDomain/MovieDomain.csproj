@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\CommentConfigurations.cs" />
     <Compile Include="Configurations\CustomRoleConfigurations.cs" />
     <Compile Include="Configurations\CustomUserClaimsConfigurations.cs" />
     <Compile Include="Configurations\CustomUserLoginsConfigurations.cs" />

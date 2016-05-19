@@ -1,5 +1,6 @@
 ﻿using MovieDomain.Configurations;
 using MovieDomain.Entities;
+using MovieDomain.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,6 +24,7 @@ namespace MovieDomain.Contexts
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new CommentConfigurations());
             modelBuilder.Configurations.Add(new ShowtimeConfigurations());
             ConfigureIdentityTables(modelBuilder);
         }
@@ -40,6 +42,7 @@ namespace MovieDomain.Contexts
         public virtual DbSet<Cinema> Cinemas { get; set; }
         public virtual DbSet<Rate> Likes { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<CustomRole> Roles { get; set; }
 
     }
 }

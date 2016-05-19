@@ -24,5 +24,7 @@ namespace MovieDomain.Repository
            Expression<Func<TEntity, bool>> filter = null,
            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
            string includeProperties = "");
+
+        TEntity FirstOrDefault(Expression<Func<TEntity, bool>> filter = null);
     }
 }

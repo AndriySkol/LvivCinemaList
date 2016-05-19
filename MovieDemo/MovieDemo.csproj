@@ -291,7 +291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\AccountController.cs" />
-    <Compile Include="Models\LikeBindingModel.cs" />
+    <Compile Include="ApiControllers\CommentController.cs" />
     <Compile Include="ApiControllers\LikesController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

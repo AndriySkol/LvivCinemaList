@@ -14,11 +14,13 @@ namespace MovieDomain.Entities
 
         public virtual ICollection<Movie> Movies { get; set; }
         public virtual ICollection<Showtime> Showtimes { get; set; }
+        public virtual ICollection<Rate> Rates { get; set; }
 
         public Cinema()
         {
             Movies = new List<Movie>();
             Showtimes = new List<Showtime>();
+            Rates = new List<Rate>();
         }
     }
 }

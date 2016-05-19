@@ -80,5 +80,17 @@ namespace MovieDomain.Repository
             }
         }
 
+        public virtual TEntity FirstOrDefault(Expression<Func<TEntity, bool>> filter = null)
+        {
+            IQueryable<TEntity> query = dbSet;
+
+            if (filter != null)
+            {
+                return query.FirstOrDefault(filter);
+            }
+
+            return query.FirstOrDefault();
+        }
+
     }
 }

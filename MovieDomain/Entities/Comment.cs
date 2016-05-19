@@ -17,9 +17,18 @@ namespace MovieDomain.Entities
         public Movie Movie { get; set; }
         public Cinema Cinema { get; set; }
         public User User { get; set; }
-        public long UserId { get; set; }
+        public long? UserId { get; set; }
         public long CinemaId { get; set; }
         public long MovieId { get; set; }
+
+        public virtual ICollection<User> Liked { get; set; }
+        public virtual ICollection<User> NotLiked { get; set; }
+
+        public Comment()
+        {
+            Liked = new List<User>();
+            NotLiked = new List<User>();
+        }
         
     }
 }

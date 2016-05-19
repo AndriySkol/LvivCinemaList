@@ -37,11 +37,13 @@ namespace MovieDomain.Entities
 
         public virtual ICollection<Cinema> Cinemas { get; set; }
         public virtual ICollection<Showtime> Showtimes { get; set; }
+        public virtual ICollection<Rate> Rates { get; set; }
 
         public Movie()
         {
             Cinemas = new List<Cinema>();
             Showtimes = new List<Showtime>();
+            Rates = new List<Rate>();
         }
 
         public override bool Equals(object obj)

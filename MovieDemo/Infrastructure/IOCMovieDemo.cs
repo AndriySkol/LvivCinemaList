@@ -33,7 +33,8 @@ namespace MovieDemo.Infrastructure
             kernel.Bind<MovieDomain.UnitOfWork.IUnitOfWorkFactory>().To<UnitOfWorkFactory>();
             kernel.Bind<IUserManager>().To<CustomUserManager>();
             kernel.Bind<IAuthService>().To<AuthService>();
-           
+            kernel.Bind<ILikeService>().To<LikeService>();
+            kernel.Bind<ICommentService>().To<CommentService>();
         }
     }
 }

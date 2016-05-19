@@ -9,7 +9,7 @@ namespace MovieDomain.Entities
     public class Rate
     {
         public long Id { get; set; }
-        public double Value { get; set; }
+        public int Value { get; set; }
         public Movie Movie { get; set; }
         public Cinema Cinema { get; set; }
         public User User { get; set; }

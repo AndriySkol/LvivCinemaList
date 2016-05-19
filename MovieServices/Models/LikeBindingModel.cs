@@ -9,5 +9,6 @@ namespace MovieDemo.ApiControllers
     {
         public long MovieId { get; set; }
         public long CinemaId { get; set; }
+        public int Rate { get; set; }
     }
 }
