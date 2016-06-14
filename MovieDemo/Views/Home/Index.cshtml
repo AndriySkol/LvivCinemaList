@@ -1,8 +1,7 @@
 ﻿@using MovieServices.Models
 @using MovieDemo.Models
+@using System.Globalization
 @model HomeViewModel
-
-
 
 <div class="row">
     <div class="col-md-2 col-md-push-10" id="filtersCol">
@@ -10,25 +9,25 @@
         {
             @(Html.Partial("FilterView", Model.FilterModel))
         }
-
     </div>
     <div class="col-md-10 col-md-pull-2 col-xs-12 ">
         <div class="row">
-
             <div class="col-xs-12 ">
-                <h6>@Model.ScheduleModel.Day.ToShortDateString()</h6>
+                <div class="btn-group">
+                    <button id="butBack" class="btn btn-flat"> <span class="glyphicon glyphicon-arrow-left"></span></button>
+                    <span class="btn " style="cursor: default; box-shadow: none">@string.Format(new DateFormatProvider(), "{0}", Model.ScheduleModel.Day) </span>
+                    <button id="butAhead" class="btn btn-link"> <span class="glyphicon glyphicon-arrow-right"></span></button>
+                </div>
                 <img src="~/Content/images/showtimes-dark-hours.png" style="width:100%" />
             </div>
-            <div class="col-md-2 col-xs-1"></div>
-            <div class="col-md-10 col-xs-11 ">
+            <div class="col-md-3 col-xs-1"></div>
+            <div class="col-md-9 col-xs-11 ">
                 @for (int i = 10; i <= 24; ++i)
                 {
                     <a href="#" style="position:absolute; left:@(PositionEvaluator.GetPercent(i))%">@i</a>
                 }
                 <br />
-
             </div>
-
 
         </div>
         <div class="row">
@@ -37,11 +36,15 @@
         @foreach (var x in Model.ScheduleModel.Sessions)
         {
             <div class="row">
-                <div class="col-md-2 col-xs-1">
-                    @x.Key.Movie.Name <span class="label label-@(StyleHelper.CinemaStyle(x.Key.Cinema))">@x.Key.Cinema.Name</span>
-
+                <div class="col-md-1">
+                    <a href="#"><img class="img-responsive z-depth-2 " src="@x.Key.Movie.ImageUrl" alt="No avatar" /> </a>
                 </div>
-                <div class="col-md-10 col-xs-11">
+                <div class="col-md-2 col-xs-1">
+                    <a href="#">
+                        @x.Key.Movie.Name <span class="label label-@(StyleHelper.CinemaStyle(x.Key.Cinema))">@x.Key.Cinema.Name</span>
+                    </a>
+                </div>
+                <div class="col-md-9 col-xs-11">
                     @foreach (var s in x.Value)
                     {
                         @Html.Action("TimeBadge", s)
@@ -52,7 +55,4 @@
         }
     </div>
 
-
-
 </div>
-

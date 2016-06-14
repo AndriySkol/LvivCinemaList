@@ -235,6 +235,7 @@
     <Content Include="Scripts\app\auth\login.js" />
     <Content Include="Scripts\app\auth\registration.js" />
     <Content Include="Scripts\app\likes.js" />
+    <Content Include="Scripts\app\main.js" />
     <Content Include="Scripts\bootstrap-material-datetimepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -309,6 +310,7 @@
     <Compile Include="Infrastructure\WebApi\WebApiNinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\WebApi\WebApiNinjectDependencyScope.cs" />
     <Compile Include="Models\CommentBindingModel.cs" />
+    <Compile Include="Models\DateFormatProvider.cs" />
     <Compile Include="Models\FilterFormModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />

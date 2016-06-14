@@ -19,7 +19,8 @@ namespace MovieDemo.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            var startEnd =  DateTime.Now.AddDays(7);
+            return View(db.Movies.Where(m => m.End != null && m.End >= DateTime.Today && m.Start <= startEnd).ToList());
         }
 
         // GET: Movies/Details/5

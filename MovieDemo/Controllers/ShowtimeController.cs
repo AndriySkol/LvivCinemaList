@@ -31,9 +31,10 @@ namespace MovieDemo.Controllers
                 ViewBag.IsAuth = User.Identity.IsAuthenticated;
                 if(User.Identity.IsAuthenticated)
                 {
+                    bool isAdmin = User.IsInRole("Admin");
                     long userId = User.Identity.GetUserId<long>();
                     var comments = context.Comments
-                        .Where(c => c.MovieId == model.Showtime.MovieId && c.CinemaId == model.Showtime.CinemaId)
+                        .Where(c => c.MovieId == model.Showtime.MovieId && c.CinemaId == model.Showtime.CinemaId && (isAdmin || !c.isBanned))
                         .Select(c => new { Comment = c, Rate = c.User.Rates.FirstOrDefault(r => r.MovieId == c.MovieId && r.CinemaId == c.CinemaId), User = c.User, UserLiked = c.Liked.Any(u => u.Id == userId), UserNotLiked = c.NotLiked.Any(u => u.Id == userId) }).ToList();
 
                     

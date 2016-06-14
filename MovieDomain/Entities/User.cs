@@ -11,6 +11,7 @@ namespace MovieDomain.Entities
 {
     public class User : IdentityUser<long, CustomUserLogin, CustomUserRole, CustomUserClaim>, IUser<long>
     {
+        public bool IsBanned { get; set; }
         public virtual ICollection<Rate> Rates { get; set; }
         public virtual ICollection<Comment> LikedComments { get; set; }
         public virtual ICollection<Comment> UnlikedComments { get; set; }

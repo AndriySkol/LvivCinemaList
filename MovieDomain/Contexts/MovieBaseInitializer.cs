@@ -12,8 +12,9 @@ using System.Xml.Linq;
 
 namespace MovieDomain.Contexts
 {
-    class MovieBaseInitializer : DropCreateDatabaseIfModelChanges<MovieContext>
+    class MovieBaseInitializer : DropCreateDatabaseAlways<MovieContext>
     {
+        const string imageStart = "/Content/images/";
         protected override void Seed(MovieContext context)
         {
             var cross = new Cinema { Name = "KingCross" };
@@ -21,11 +22,30 @@ namespace MovieDomain.Contexts
             context.Cinemas.Add(cross);
             context.Cinemas.Add(forum);
             context.SaveChanges();
-            XElement elementKross = XElement.Load("http://planetakino.ua/lvov/ua/showtimes/xml/");
-            XElement elementForum = XElement.Load("http://planetakino.ua/lvov2/ua/showtimes/xml/");
+            XElement elementKross = XElement.Load("D:/sched/cross.xml");
+            XElement elementForum = XElement.Load("D:/sched/forum.xml");
             var moviesCross = elementKross.Element("movies").Elements().Select(e => GetMovie(e));
             var moviesForum = elementForum.Element("movies").Elements().Select(e => GetMovie(e));
             var movies = moviesCross.Union(moviesForum).ToList();
+            Movie dory = movies.First(m => m.Name == "У пошуках Дорі"),
+                alice = movies.First(m => m.Name == "Аліса в задзеркаллі"),
+                illusion = movies.First(m => m.Name == "Ілюзія обману: другий акт"),
+                money = movies.First(m => m.Name == "Грошова пастка"),
+                season = movies.First(m => m.Name == "Сезон полювання: Байки з лісу"),
+                warcraft = movies.First(m => m.Name == "Warcraft: Початок"),
+                xMen = movies.First(m => m.Name == "Люди Ікс: Апокаліпсис"),
+                spell = movies.First(m => m.Name == "Закляття 2: Полтергейст у Енфілді"),
+                turtles = movies.First(m => m.Name == "Підлітки-мутанти Черепашки-ніндзя 2");
+            dory.ImageUrl = imageStart + "findDory.jpg";
+            alice.ImageUrl = imageStart + "aliceInWonder.jpg";
+            illusion.ImageUrl = imageStart + "nowYouSeeMe2.jpg";
+            money.ImageUrl = imageStart + "moneyMonster.jpg";
+            turtles.ImageUrl = imageStart + "ninjaTurtles.jpg";
+            season.ImageUrl = imageStart + "openSeason.jpg";
+            warcraft.ImageUrl = imageStart + "warcraft.jpg";
+            xMen.ImageUrl = imageStart + "xMen.jpg";
+            spell.ImageUrl = imageStart + "spell.jpg";
+
             movies.ForEach(m => cross.Movies.Add(m));
             context.SaveChanges();
             var showtimesKross =

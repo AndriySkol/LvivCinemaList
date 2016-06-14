@@ -14,6 +14,8 @@ namespace MovieDomain.Entities
         public long UnhelpfulCount { get; set; }
         public DateTime Time { get; set; }
 
+        public bool isBanned { get; set; }
+
         public Movie Movie { get; set; }
         public Cinema Cinema { get; set; }
         public User User { get; set; }

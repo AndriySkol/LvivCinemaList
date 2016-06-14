@@ -1,6 +1,6 @@
 ﻿@model MovieDemo.Models.FilterViewModel
 
-@using(Html.BeginForm("Index", "Home", FormMethod.Get))
+@using (Html.BeginForm("Index", "Home", FormMethod.Get, new { id = "filterForm"}))
 {
     <div class="card z-depth-2 default-color-dark">
     <div class="card-content white-text">
@@ -15,7 +15,7 @@
             <li>
                 <p data-toggle="collapse" data-target="#cinemaFilterList"><i class="glyphicon glyphicon-map-marker i-margin"></i>Cinemas <span class="caret"></span></p>
                 <ul class="filterList-second collapse" id="cinemaFilterList">
-                    @foreach(var pair in Model.Cinemas)
+                    @foreach (var pair in Model.Cinemas)
                     {
                         <li>
                             <input type="checkbox" name="cinemas" value="@pair.Key.Id" checked="@pair.Value"  /> @pair.Key.Name
