@@ -120,6 +120,26 @@ namespace NUnitTestProject
         }
 
         [Test]
+        public void BanComment()
+        {
+            CommentService service = new CommentService(_factory);
+            service.BanComment(5);
+            Expect(comments[1].isBanned, Is.True);
+            _commentsMock.Verify(m => m.Update(comments[1]), Times.Once);
+            _unitMock.Verify(m => m.Save(), Times.AtLeastOnce);
+        }
+
+        [Test]
+        public void UnBanComment()
+        {
+            CommentService service = new CommentService(_factory);
+            service.UnBanComment(5);
+            Expect(comments[1].isBanned, Is.False);
+            _commentsMock.Verify(m => m.Update(comments[1]), Times.Once);
+            _unitMock.Verify(m => m.Save(), Times.AtLeastOnce);
+        }
+
+        [Test]
         public void LikeControllerCallsService()
         {
             CommentController controller = new CommentController(_commentService.Object);
@@ -150,6 +170,23 @@ namespace NUnitTestProject
         {
             CommentController controller = new CommentController(_commentService.Object);
             var result = controller.UnLike(5);
+            Expect(result, Is.TypeOf<OkResult>());
+        }
+
+
+        [Test]
+        public void BanCommentControllerReturnsOk()
+        {
+            CommentController controller = new CommentController(_commentService.Object);
+            var result = controller.BanComment(5);
+            Expect(result, Is.TypeOf<OkResult>());
+        }
+
+        [Test]
+        public void UnBanCommentControllerReturnsOk()
+        {
+            CommentController controller = new CommentController(_commentService.Object);
+            var result = controller.UnBanComment(5);
             Expect(result, Is.TypeOf<OkResult>());
         }
 

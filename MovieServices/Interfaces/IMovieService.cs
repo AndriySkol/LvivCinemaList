@@ -12,6 +12,7 @@ namespace MovieServices.Services
     {
         IEnumerable<Cinema> GetCinemas();
         IEnumerable<Movie> GetCurrentMovies();
+        Movie GetMovie(long id);
         ScheduleModel Get(DateTime start, long[] cinemaId = null, string[] technlogies = null, long[] movieId = null);
     }
 }

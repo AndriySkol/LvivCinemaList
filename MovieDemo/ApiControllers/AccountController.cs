@@ -81,7 +81,12 @@ namespace MovieDemo.ApiControllers
             return BadRequest(ModelState);
         }
 
-        
+        [Authorize(Roles="Admin")]
+        public IHttpActionResult BanUser(long userId)
+        {
+            _authService.BanUser(userId);
+            return Ok();
+        }
         
         #region HelperMethods
         private IAuthenticationManager Authentication 

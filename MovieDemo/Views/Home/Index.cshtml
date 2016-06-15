@@ -37,10 +37,12 @@
         {
             <div class="row">
                 <div class="col-md-1">
-                    <a href="#"><img class="img-responsive z-depth-2 " src="@x.Key.Movie.ImageUrl" alt="No avatar" /> </a>
+                    <a href="@Url.Action("ShowMovie", "Showtime", new {id = x.Key.Movie.Id, date = Model.ScheduleModel.Day})">
+                        <img class="img-responsive z-depth-2 " src="@x.Key.Movie.ImageUrl" alt="No avatar" />
+                    </a>
                 </div>
                 <div class="col-md-2 col-xs-1">
-                    <a href="#">
+                    <a href="@Url.Action("ShowMovie", "Showtime", new { id = x.Key.Movie.Id, date = Model.ScheduleModel.Day })">
                         @x.Key.Movie.Name <span class="label label-@(StyleHelper.CinemaStyle(x.Key.Cinema))">@x.Key.Cinema.Name</span>
                     </a>
                 </div>

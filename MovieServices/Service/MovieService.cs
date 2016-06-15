@@ -65,5 +65,13 @@ namespace MovieServices.Services
                 return unit.Movies.Get(m => m.End != null && m.End >= DateTime.Today && m.Start <= DateTime.Today);
             }
         }
+
+        public Movie GetMovie(long id)
+        {
+            using (IUnitOfWork unit = _unitOfWorkFactory.Create())
+            {
+                return unit.Movies.GetById(id);
+            }
+        }
     }
 }

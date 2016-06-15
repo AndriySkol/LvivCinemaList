@@ -188,7 +188,16 @@
     <Content Include="Content\bootstrap-material-datetimepicker.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\aliceInWonder.jpg" />
+    <Content Include="Content\images\findDory.jpg" />
+    <Content Include="Content\images\moneyMonster.jpg" />
+    <Content Include="Content\images\ninjaTurtles.jpg" />
+    <Content Include="Content\images\nowYouSeeMe2.jpg" />
+    <Content Include="Content\images\openSeason.jpg" />
     <Content Include="Content\images\showtimes-dark-hours.png" />
+    <Content Include="Content\images\spell.jpg" />
+    <Content Include="Content\images\warcraft.jpg" />
+    <Content Include="Content\images\xMen.jpg" />
     <Content Include="Content\MDB_3.3.3\css\bootstrap.min.css" />
     <Content Include="Content\MDB_3.3.3\css\mdb.css" />
     <Content Include="Content\MDB_3.3.3\css\mdb.min.css" />
@@ -283,6 +292,11 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\star-rating.js" />
     <Content Include="Web.config">
@@ -315,6 +329,7 @@
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\PositionEvaluator.cs" />
     <Compile Include="Models\SessionViewModel.cs" />
     <Compile Include="Models\StyleHelper.cs" />
@@ -342,6 +357,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Showtime\Index.cshtml" />
     <Content Include="Views\Showtime\Default.cshtml" />
+    <Content Include="Views\Showtime\ShowMovie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

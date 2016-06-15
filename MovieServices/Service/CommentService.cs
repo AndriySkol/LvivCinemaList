@@ -70,5 +70,28 @@ namespace MovieServices.Service
                 unit.Save();
             }
         }
+
+
+        public void BanComment(long cId)
+        {
+            using (var unit = _factory.Create())
+            {
+                Comment comment = unit.Comments.FirstOrDefault(c => c.Id == cId);
+                comment.isBanned = true;
+                unit.Comments.Update(comment);
+                unit.Save();
+            }
+        }
+
+        public void UnBanComment(long cId)
+        {
+            using (var unit = _factory.Create())
+            {
+                Comment comment = unit.Comments.FirstOrDefault(c => c.Id == cId);
+                comment.isBanned = false;
+                unit.Comments.Update(comment);
+                unit.Save();
+            }
+        }
     }
 }

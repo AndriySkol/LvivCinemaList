@@ -16,5 +16,9 @@ namespace MovieServices.Interfaces
         Task<IdentityResult> Register(RegistrationBindingModel model);
 
         Task<IList<string>> GetRolesAsync(User user);
+
+        void BanUser(long userId);
+        void UnBanUser(long userId);
+
     }
 }

@@ -31,5 +31,19 @@ namespace MovieDemo.ApiControllers
             _service.UnLike(cid, userId);
             return Ok();
         }
+
+        [Authorize(Roles="Admin")]
+        public IHttpActionResult BanComment([FromBody]long cid)
+        {
+            _service.BanComment(cid);
+            return Ok();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult UnBanComment([FromBody]long cid)
+        {
+            _service.UnBanComment(cid);
+            return Ok();
+        }
     }
 }

@@ -50,8 +50,10 @@
         location.href = "/showtime?id=" + showId + "&orderString=" + $(event.target).val();
     });
     
-    if(ordered == true)
+    if(ordered == true )
     {
         $(window).scrollTop($('.comment').offset().top - $('.comment').height());
     }
+
+    
 })

@@ -1,0 +1,95 @@
+﻿@model MovieDemo.Models.MovieViewModel
+@using MovieServices.Models
+@using MovieDemo.Models
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="waves-effect waves-light mask z-depth-2"><img src="@Model.Movie.ImageUrl" alt="" class="img-responsive " /></div>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-sm-12 card card-panel">
+                <h4>
+                    @Model.Movie.Name
+                </h4>
+                <hr />
+                <h5>Movie info:</h5>
+                <p><i class="glyphicon glyphicon-time i-margin"></i>Year: @Model.Movie.Year</p>
+                <p><i class="glyphicon glyphicon-map-marker i-margin"></i>Country: @Model.Movie.Country</p>
+                <p><i class="glyphicon glyphicon-user i-margin"></i>Director: @Model.Movie.Director</p>
+                <p><i class="glyphicon glyphicon-tags i-margin"></i>Genres: @Model.Movie.Genres</p>
+                <p><i class="glyphicon glyphicon-star i-margin"></i>ImdbRate: @Model.Movie.ImdbRate</p>
+                <p><i class="glyphicon glyphicon-book i-margin"></i> Description: @Model.Movie.Description</p>
+                <br />
+                <a href="@Model.Movie.Url" class="btn btn-block btn-label">Find more Info</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<hr />
+<br />
+
+<div class="row schedule">
+    
+    <div class="col-xs-12 ">
+        <div class="row">
+            <div class="col-xs-12 ">
+                <div class="btn-group">
+                    <a href='@Url.Action("ShowMovie", new { id = Model.Movie.Id, toSchedule = true, date = Model.ScheduleModel.Day.AddDays(-1) })' class="btn btn-link"> <span class="glyphicon glyphicon-arrow-left"></span></a>
+                    <span class="btn " style="cursor: default; box-shadow: none">@string.Format(new DateFormatProvider(), "{0}", Model.ScheduleModel.Day) </span>
+                    <a href='@Url.Action("ShowMovie", new {id = Model.Movie.Id, toSchedule = true, date = Model.ScheduleModel.Day.AddDays(1)})' class="btn btn-link"> <span class="glyphicon glyphicon-arrow-right"></span></a>
+                </div>
+                <img src="~/Content/images/showtimes-dark-hours.png" style="width:100%" />
+            </div>
+            <div class="col-md-3 col-xs-1"></div>
+            <div class="col-md-9 col-xs-11 ">
+                @for (int i = 10; i <= 24; ++i)
+                {
+                    <a href="#" style="position:absolute; left:@(PositionEvaluator.GetPercent(i))%">@i</a>
+                }
+                <br />
+            </div>
+
+        </div>
+        <div class="row">
+            <hr />
+        </div>
+        @foreach (var x in Model.ScheduleModel.Sessions)
+        {
+            <div class="row">
+                <div class="col-md-1">
+                    <a href="#"><img class="img-responsive z-depth-2 " src="@x.Key.Movie.ImageUrl" alt="No avatar" /> </a>
+                </div>
+                <div class="col-md-2 col-xs-1">
+                    <a href="#">
+                        @x.Key.Movie.Name <span class="label label-@(StyleHelper.CinemaStyle(x.Key.Cinema))">@x.Key.Cinema.Name</span>
+                    </a>
+                </div>
+                <div class="col-md-9 col-xs-11">
+                    @foreach (var s in x.Value)
+                    {
+                        @Html.Action("TimeBadge", "Home", s)
+                    }
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+
+</div>
+
+@if (Model.GoesToSchedule)
+{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function() {
+            $(window).scrollTop($('.schedule').offset().top);
+        })
+           
+        
+    </script>
+   
+   
+}

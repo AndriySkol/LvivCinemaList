@@ -20,5 +20,6 @@ namespace MovieDemo.Models
         public int LikesAmount { get; set; }
         public int CommentsAmount { get; set; }
         public string CommentOrder { get; set; }
+        public bool IsUserBanned { get; set; }
     }
 }

@@ -52,14 +52,15 @@
                 <p><i class="glyphicon glyphicon-tags i-margin"></i>Genres: @Model.Movie.Genres</p>
                 <p><i class="glyphicon glyphicon-star i-margin"></i>ImdbRate: @Model.Movie.ImdbRate</p>
                 <p><i class="glyphicon glyphicon-book i-margin"></i> Description: @Model.Movie.Description</p>
+                <br />
                 <a href="@Model.Movie.Url" class="btn btn-block btn-label">Find more Info</a>
             </div>
             <div class="col-sm-3">
-                <div class="card  stylish-color-dark session-card hoverable z-index-1 pull-left">
+                <div class=" card  stylish-color-dark session-card hoverable z-index-1 pull-left">
                     <div class="card-content">
                         <div class="row">
                             <div style="margin-left:10px">
-                                @foreach (char c in Model.Showtime.Date.ToString("hh:mm"))
+                                @foreach (char c in Model.Showtime.Date.ToString("HH:mm"))
                                 {
                                     if (c == ':')
                                     {

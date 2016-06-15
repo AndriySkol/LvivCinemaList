@@ -9,5 +9,7 @@ namespace MovieServices.Interfaces
     {
         void Like(long cId, long userId);
         void UnLike(long cId, long userId);
+        void BanComment(long cId);
+        void UnBanComment(long cId);
     }
 }
